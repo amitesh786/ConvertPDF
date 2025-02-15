@@ -1,16 +1,17 @@
-# 📄 JPG/PNG to PDF Converter
-A simple web application that allows users to upload JPG, JPEG, or PNG images and convert them into a PDF document using JavaScript and PDF-Lib.
+# 📄 JPG/PNG/HEIC to PDF Converter
+A simple web application that allows users to upload JPG, JPEG, HEIC, or PNG images and convert them into a PDF document using JavaScript and PDF-Lib.
 
 ## 🚀 Features
-- ✅ Convert multiple JPG, JPEG, and PNG images into a single PDF.
+- ✅ Convert multiple JPG, JPEG, HEIC and PNG images into a single PDF.
 - ✅ User-friendly interface built with Bootstrap.
 - ✅ Client-side processing – No server required.
 - ✅ Fast and lightweight solution.
+- ✅ Add drag & drop support for single file upload.
 
 ## 📂 File Structure
-│── index.html           # Main HTML file
-│── converter.js         # JavaScript file for PDF conversion
-│── README.md            # Project documentation
+- │── index.html           # Main HTML file
+- │── converter.js         # JavaScript file for PDF conversion
+- │── README.md            # Project documentation
 
 ## 🛠️ Technologies Used
 - HTML5, CSS3, Bootstrap – For responsive UI
@@ -18,8 +19,8 @@ A simple web application that allows users to upload JPG, JPEG, or PNG images an
 
 ## 📌 How to Use
 - 1️⃣ Open index.html in a browser.
-- 2️⃣ Click on the file input and select one or more JPG/PNG images.
-- 3️⃣ Click the "Convert to PDF" button.
+- 2️⃣ Click on the file input and select one or more JPG/HEIC/PNG images.
+- 3️⃣ Click the "Convert to PDF" button and it will start loading.
 - 4️⃣ The converted PDF will be automatically downloaded.
 
 ## 🔧 Setup (For Developers)
@@ -31,9 +32,7 @@ A simple web application that allows users to upload JPG, JPEG, or PNG images an
 - This project is open-source and available under the MIT License.
 
 ## 💡 Future Improvements
-- ✅ Support for more image formats (e.g., WebP, BMP).
-- ✅ Allow users to reorder images before conversion.
-- ✅ Add drag & drop support for file uploads.
+- ✅ Add drag & drop support for multiple files uploads.
 
 ## 👨‍💻 Author
 - Developed by Amitesh Singh | © 2025

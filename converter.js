@@ -4,24 +4,57 @@ async function convertPngsToPdf(files) {
     const pdfDoc = await PDFDocument.create();
 
     for (let file of files) {
-        if (!file.type.match('image/png') && !file.type.match('image/jpeg')) {
+        if (!file.type.match('image/png') && !file.type.match('image/jpeg') && !file.type.match('image/heic')) {
             console.warn(`Skipping unsupported file: ${file.name}`);
             continue;
         }
 
-        const reader = new FileReader();
-        const loadPromise = new Promise((resolve) => {
-            reader.onload = () => resolve(reader.result);
-        });
+        let arrayBuffer;
 
-        reader.readAsArrayBuffer(file);
-        const arrayBuffer = await loadPromise;
+        if (file.type === 'image/heic') {
+            try {
+                const heicBlob = await window.heic2any({
+                    blob: file,
+                    toType: "image/jpeg",
+                    quality: 0.8
+                });
+
+                if (!heicBlob) {
+                    console.error(`HEIC conversion failed for: ${file.name}`);
+                    continue;
+                }
+
+                arrayBuffer = await heicBlob.arrayBuffer();
+            } catch (error) {
+                console.error(`Error converting HEIC file: ${file.name}`, error);
+                continue;
+            }
+        } else {
+            const reader = new FileReader();
+            const loadPromise = new Promise((resolve) => {
+                reader.onload = () => resolve(reader.result);
+            });
+            reader.readAsArrayBuffer(file);
+            arrayBuffer = await loadPromise;
+        }
+
+        if (!arrayBuffer || arrayBuffer.byteLength === 0) {
+            console.error(`Skipping ${file.name} because ArrayBuffer is empty.`);
+            continue;
+        }
 
         let image;
-        if (file.type === 'image/png') {
-            image = await pdfDoc.embedPng(arrayBuffer);
-        } else if (file.type === 'image/jpeg') {
-            image = await pdfDoc.embedJpg(arrayBuffer);
+        try {
+            if (file.type === 'image/png') {
+                console.log(`Embedding PNG: ${file.name}`);
+                image = await pdfDoc.embedPng(arrayBuffer);
+            } else {
+                console.log(`Embedding JPEG (or converted HEIC): ${file.name}`);
+                image = await pdfDoc.embedJpg(arrayBuffer);
+            }
+        } catch (error) {
+            console.error(`Failed to embed image: ${file.name}`, error);
+            continue;
         }
 
         const { width, height } = image.scale(0.5);
@@ -33,8 +66,11 @@ async function convertPngsToPdf(files) {
             width,
             height,
         });
+    }
 
-        console.log(`Added ${file.name} to PDF.`);
+    if (pdfDoc.getPageCount() === 0) {
+        alert("No valid images were added to the PDF. Please check the file format.");
+        return;
     }
 
     const pdfBytes = await pdfDoc.save();
@@ -48,12 +84,29 @@ async function convertPngsToPdf(files) {
     console.log("PDF downloaded.");
 }
 
-document.getElementById('convertBtn').addEventListener('click', function () {
+document.getElementById('convertBtn').addEventListener('click', async function () {
     console.log("Convert button clicked.");
     const files = document.getElementById('fileInput').files;
-    if (files.length > 0) {
-        convertPngsToPdf(files);
-    } else {
-        alert('Please select at least one PNG file');
+    const convertBtn = document.getElementById('convertBtn');
+
+    if (files.length === 0) {
+        alert('Please select at least one PNG, JPEG, or HEIC file');
+        return;
+    }
+
+    convertBtn.disabled = true;
+    convertBtn.innerHTML = '<span class="spinner-border spinner-border-sm"></span> Converting...';
+
+    try {
+        await convertPngsToPdf(files);
+    } finally {
+        convertBtn.disabled = false;
+        convertBtn.innerHTML = 'Convert to PDF';
+        
+        fileInput.value = '';
+        if (fileInput.files.length > 0) {
+            const newInput = fileInput.cloneNode(true);
+            fileInput.parentNode.replaceChild(newInput, fileInput);
+        }
     }
 });
