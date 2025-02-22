@@ -6,7 +6,7 @@ A simple web application that allows users to upload JPG, JPEG, HEIC, or PNG ima
 - ✅ User-friendly interface built with Bootstrap.
 - ✅ Client-side processing – No server required.
 - ✅ Fast and lightweight solution.
-- ✅ Add drag & drop support for single file upload.
+- ✅ Add drag & drop support for single/multiple file upload.
 
 ## 📂 File Structure
 - │── index.html           # Main HTML file
@@ -30,9 +30,6 @@ A simple web application that allows users to upload JPG, JPEG, HEIC, or PNG ima
 
 ## 📜 License
 - This project is open-source and available under the MIT License.
-
-## 💡 Future Improvements
-- ✅ Add drag & drop support for multiple files uploads.
 
 ## 👨‍💻 Author
 - Developed by Amitesh Singh | © 2025

@@ -3,6 +3,8 @@ async function convertPngsToPdf(files) {
     const PDFDocument = window.PDFLib.PDFDocument;
     const pdfDoc = await PDFDocument.create();
 
+    let currentFileIndex = 1;
+
     for (let file of files) {
         if (!file.type.match('image/png') && !file.type.match('image/jpeg') && !file.type.match('image/heic')) {
             console.warn(`Skipping unsupported file: ${file.name}`);
@@ -66,6 +68,9 @@ async function convertPngsToPdf(files) {
             width,
             height,
         });
+
+        console.log(`Converted image ${currentFileIndex} of ${files.length}: ${file.name}`);
+        currentFileIndex++;
     }
 
     if (pdfDoc.getPageCount() === 0) {
@@ -108,5 +113,23 @@ document.getElementById('convertBtn').addEventListener('click', async function (
             const newInput = fileInput.cloneNode(true);
             fileInput.parentNode.replaceChild(newInput, fileInput);
         }
+    }
+});
+
+document.getElementById("fileInput").addEventListener("change", function () {
+    const fileList = document.getElementById("fileList");
+    fileList.innerHTML = "";
+
+    if (this.files.length > 0) {
+        const ul = document.createElement("ul");
+        ul.classList.add("list-unstyled");
+
+        Array.from(this.files).forEach((file, index) => {
+            const li = document.createElement("li");
+            li.textContent = `${index + 1}. ${file.name}`;
+            ul.appendChild(li);
+        });
+
+        fileList.appendChild(ul);
     }
 });
