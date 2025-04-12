@@ -1,5 +1,4 @@
-async function convertPngsToPdf(files) {
-    console.log("Starting PDF conversion...");
+const convertPngsToPdf = async (files) => {
     const PDFDocument = window.PDFLib.PDFDocument;
     const pdfDoc = await PDFDocument.create();
 
@@ -79,18 +78,14 @@ async function convertPngsToPdf(files) {
     }
 
     const pdfBytes = await pdfDoc.save();
-    console.log("PDF successfully created!");
-
     const blob = new Blob([pdfBytes], { type: 'application/pdf' });
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
     link.download = 'converted.pdf';
     link.click();
-    console.log("PDF downloaded.");
 }
 
 document.getElementById('convertBtn').addEventListener('click', async function () {
-    console.log("Convert button clicked.");
     const files = document.getElementById('fileInput').files;
     const convertBtn = document.getElementById('convertBtn');
 
