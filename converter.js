@@ -59,9 +59,9 @@ const convertImagesToPdf = async (files) => {
         }
 
         const { width, height } = pdfImage.scale(0.5);
-        const page = pdfDoc.addPage([width + 100, height + 100]);
+        const pdfPage = pdfDoc.addPage([width + 100, height + 100]);
 
-        page.drawImage(pdfImage, {
+        pdfPage.drawImage(pdfImage, {
             x: 50,
             y: 50,
             width,
@@ -79,29 +79,29 @@ const convertImagesToPdf = async (files) => {
 
     const pdfBytes = await pdfDoc.save();
     const blob = new Blob([pdfBytes], { type: 'application/pdf' });
-    const link = document.createElement('a');
-    link.href = URL.createObjectURL(blob);
-    link.download = 'converted.pdf';
-    link.click();
+    const downloadLink = document.createElement('a');
+    downloadLink.href = URL.createObjectURL(blob);
+    downloadLink.download = 'converted.pdf';
+    downloadLink.click();
 }
 
 document.getElementById('convertBtn').addEventListener('click', async function () {
     const files = document.getElementById('fileInput').files;
-    const convertBtn = document.getElementById('convertBtn');
+    const convertButton = document.getElementById('convertBtn');
 
     if (files.length === 0) {
         alert('Please select at least one PNG, JPEG, or HEIC file');
         return;
     }
 
-    convertBtn.disabled = true;
-    convertBtn.innerHTML = '<span class="spinner-border spinner-border-sm"></span> Converting...';
+    convertButton.disabled = true;
+    convertButton.innerHTML = '<span class="spinner-border spinner-border-sm"></span> Converting...';
 
     try {
         await convertImagesToPdf(files);
     } finally {
-        convertBtn.disabled = false;
-        convertBtn.innerHTML = 'Convert to PDF';
+        convertButton.disabled = false;
+        convertButton.innerHTML = 'Convert to PDF';
         
         fileInput.value = '';
         if (fileInput.files.length > 0) {
@@ -112,8 +112,8 @@ document.getElementById('convertBtn').addEventListener('click', async function (
 });
 
 document.getElementById("fileInput").addEventListener("change", function () {
-    const fileList = document.getElementById("fileList");
-    fileList.innerHTML = "";
+    const fileListContainer = document.getElementById("fileList");
+    fileListContainer.innerHTML = "";
 
     if (this.files.length > 0) {
         const ul = document.createElement("ul");
@@ -125,6 +125,6 @@ document.getElementById("fileInput").addEventListener("change", function () {
             ul.appendChild(li);
         });
 
-        fileList.appendChild(ul);
+        fileListContainer.appendChild(ul);
     }
 });
