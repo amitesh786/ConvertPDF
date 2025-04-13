@@ -1,4 +1,4 @@
-const convertPngsToPdf = async (files) => {
+const convertImagesToPdf = async (files) => {
     const PDFDocument = window.PDFLib.PDFDocument;
     const pdfDoc = await PDFDocument.create();
 
@@ -10,70 +10,70 @@ const convertPngsToPdf = async (files) => {
             continue;
         }
 
-        let arrayBuffer;
+        let imageBuffer;
 
         if (file.type === 'image/heic') {
             try {
-                const heicBlob = await window.heic2any({
+                const convertedHeicBlob = await window.heic2any({
                     blob: file,
                     toType: "image/jpeg",
                     quality: 0.8
                 });
 
-                if (!heicBlob) {
+                if (!convertedHeicBlob) {
                     console.error(`HEIC conversion failed for: ${file.name}`);
                     continue;
                 }
 
-                arrayBuffer = await heicBlob.arrayBuffer();
+                imageBuffer = await convertedHeicBlob.arrayBuffer();
             } catch (error) {
                 console.error(`Error converting HEIC file: ${file.name}`, error);
                 continue;
             }
         } else {
             const reader = new FileReader();
-            const loadPromise = new Promise((resolve) => {
+            const fileLoadPromise = new Promise((resolve) => {
                 reader.onload = () => resolve(reader.result);
             });
             reader.readAsArrayBuffer(file);
-            arrayBuffer = await loadPromise;
+            imageBuffer = await fileLoadPromise;
         }
 
-        if (!arrayBuffer || arrayBuffer.byteLength === 0) {
-            console.error(`Skipping ${file.name} because ArrayBuffer is empty.`);
+        if (!imageBuffer || imageBuffer.byteLength === 0) {
+            console.error(`Skipping ${file.name} because imageBuffer is empty.`);
             continue;
         }
 
-        let image;
+        let pdfImage;
         try {
             if (file.type === 'image/png') {
                 console.log(`Embedding PNG: ${file.name}`);
-                image = await pdfDoc.embedPng(arrayBuffer);
+                pdfImage = await pdfDoc.embedPng(imageBuffer);
             } else {
                 console.log(`Embedding JPEG (or converted HEIC): ${file.name}`);
-                image = await pdfDoc.embedJpg(arrayBuffer);
+                pdfImage = await pdfDoc.embedJpg(imageBuffer);
             }
         } catch (error) {
             console.error(`Failed to embed image: ${file.name}`, error);
             continue;
         }
 
-        const { width, height } = image.scale(0.5);
+        const { width, height } = pdfImage.scale(0.5);
         const page = pdfDoc.addPage([width + 100, height + 100]);
 
-        page.drawImage(image, {
+        page.drawImage(pdfImage, {
             x: 50,
             y: 50,
             width,
             height,
         });
 
-        console.log(`Converted image ${currentFileIndex} of ${files.length}: ${file.name}`);
+        console.log(`Converted pdfImage ${currentFileIndex} of ${files.length}: ${file.name}`);
         currentFileIndex++;
     }
 
     if (pdfDoc.getPageCount() === 0) {
-        alert("No valid images were added to the PDF. Please check the file format.");
+        alert("No valid pdfImage were added to the PDF. Please check the file format.");
         return;
     }
 
@@ -98,7 +98,7 @@ document.getElementById('convertBtn').addEventListener('click', async function (
     convertBtn.innerHTML = '<span class="spinner-border spinner-border-sm"></span> Converting...';
 
     try {
-        await convertPngsToPdf(files);
+        await convertImagesToPdf(files);
     } finally {
         convertBtn.disabled = false;
         convertBtn.innerHTML = 'Convert to PDF';
