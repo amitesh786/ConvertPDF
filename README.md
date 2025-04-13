@@ -9,8 +9,8 @@ A simple web application that allows users to upload JPG, JPEG, HEIC, or PNG ima
 - ✅ Add drag & drop support for single/multiple file upload.
 
 ## 📂 File Structure
-- │── index.html           # Main HTML file
-- │── converter.js         # JavaScript file for PDF conversion
+- │── index.html           # Main HTML file with Bootstrap UI
+- │── converter.js         # JavaScript logic for image-to-PDF conversion
 - │── README.md            # Project documentation
 
 ## 🛠️ Technologies Used
@@ -18,15 +18,15 @@ A simple web application that allows users to upload JPG, JPEG, HEIC, or PNG ima
 - JavaScript (PDF-Lib.js) – For converting images to PDF
 
 ## 📌 How to Use
-- 1️⃣ Open index.html in a browser.
-- 2️⃣ Click on the file input and select one or more JPG/HEIC/PNG images.
-- 3️⃣ Click the "Convert to PDF" button and it will start loading.
-- 4️⃣ The converted PDF will be automatically downloaded.
+- 1️⃣ Open `index.html` in your browser.
+- 2️⃣ Use the file input or drag & drop one or more JPG, JPEG, HEIC, or PNG images.
+- 3️⃣ Click `Convert to PDF`.
+- 4️⃣ The generated PDF will automatically download.
 
 ## 🔧 Setup (For Developers)
 - Clone the repository: `git clone https://github.com/amitesh786/ConvertPDF.git`
 - cd ConvertPdf
-- Open index.html in a browser and start using the tool!
+Then, simply open `index.html` in your browser to get started.
 
 ## 📜 License
 - This project is open-source and available under the MIT License.
