@@ -119,10 +119,18 @@ document.getElementById("fileInput").addEventListener("change", function () {
         const ul = document.createElement("ul");
         ul.classList.add("list-group");
 
+        const formatFileSize = (bytes) => {
+            const kb = bytes / 1024;
+            if (kb < 1024) return `${kb.toFixed(1)} KB`;
+            const mb = kb / 1024;
+            return `${mb.toFixed(2)} MB`;
+        };
+
         Array.from(this.files).forEach((file, index) => {
             const li = document.createElement("li");
             li.classList.add("list-group-item", "d-flex", "justify-content-between", "align-items-center");
-            li.innerHTML = `<span>${index + 1}. ${file.name}</span><span class="badge bg-secondary rounded-pill"></span>`;
+            const size = formatFileSize(file.size);
+            li.innerHTML = `<span>${index + 1}. ${file.name}</span><span class="badge bg-secondary rounded-pill">${size}</span>`;
             ul.appendChild(li);
         });
 
