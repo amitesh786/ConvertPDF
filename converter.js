@@ -117,11 +117,12 @@ document.getElementById("fileInput").addEventListener("change", function () {
 
     if (this.files.length > 0) {
         const ul = document.createElement("ul");
-        ul.classList.add("list-unstyled");
+        ul.classList.add("list-group");
 
         Array.from(this.files).forEach((file, index) => {
             const li = document.createElement("li");
-            li.textContent = `${index + 1}. ${file.name}`;
+            li.classList.add("list-group-item", "d-flex", "justify-content-between", "align-items-center");
+            li.innerHTML = `<span>${index + 1}. ${file.name}</span><span class="badge bg-secondary rounded-pill"></span>`;
             ul.appendChild(li);
         });
 
