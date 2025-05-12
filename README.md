@@ -8,11 +8,6 @@ A simple and fast web app to convert JPG, JPEG, PNG, or HEIC images into a singl
 - Drag & drop support for multiple files.
 - Automatic download of the generated PDF.
 
-<!-- ## 📂 File Structure
-- │── index.html           # Main HTML file with Bootstrap UI
-- │── converter.js         # JavaScript logic for image-to-PDF conversion
-- │── README.md            # Project documentation -->
-
 ## File Structure
 - project-root/
 - ├── index.html        # Main HTML file with Bootstrap UI
