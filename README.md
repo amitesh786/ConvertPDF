@@ -14,10 +14,6 @@ A simple and fast web app to convert JPG, JPEG, PNG, or HEIC images into a singl
 - ├── converter.js      # JavaScript logic for image-to-PDF conversion
 - └── README.md         # Project documentation
 
-<!-- ## 🛠️ Technologies Used
-- HTML5, CSS3, Bootstrap – For responsive UI
-- JavaScript (PDF-Lib.js) – For converting images to PDF -->
-
 ## Technologies Used
 - **HTML5**, **CSS3**, **Bootstrap** – For responsive layout and styling.
 - **JavaScript** with [PDF-Lib](https://pdf-lib.js.org/) – To generate PDF files directly in the browser.
