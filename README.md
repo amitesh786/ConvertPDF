@@ -11,7 +11,7 @@ A simple and fast web app to convert JPG, JPEG, PNG, or HEIC images into a singl
 ## File Structure
 - project-root/
 - ├── index.html        # Main HTML file with Bootstrap UI
-- ├── converter.js      # JavaScript logic for image-to-PDF conversion
+- ├── index.js          # JavaScript logic for image-to-PDF conversion
 - └── README.md         # Project documentation
 
 ## Technologies Used
@@ -35,4 +35,4 @@ Then, simply open `index.html` in your browser to get started.
 
 ## Author
 - Developed by Amitesh Singh | © 2025
-- Feel free to contribute or suggest improvements! 🚀
+- Feel free to contribute or suggest improvements!
