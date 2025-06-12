@@ -24,6 +24,10 @@ A simple and fast web app to convert JPG, JPEG, PNG, or HEIC images into a singl
 3. Click the **Convert to PDF** button.
 4. The generated PDF will be downloaded automatically.
 
+## Demo
+![Demo ConvertPDF](Demo-Convert-PDF.gif)
+*A quick demonstration of how images are uploaded, validated, previewed, and seamlessly converted into a PDF — all in the browser without any server interaction.*
+
 ## Setup (For Developers)
 To run the project locally:
 - Clone the repository: `git clone https://github.com/amitesh786/ConvertPDF.git`
