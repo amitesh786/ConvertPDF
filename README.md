@@ -1,6 +1,16 @@
 # JPG/PNG/HEIC to PDF Converter
 A simple and fast web app to convert JPG, JPEG, PNG, or HEIC images into a single PDF — all on the client side using JavaScript and PDF-Lib.
 
+## Table of Contents
+
+- [Features](#Features)
+- [File Structure](#File-Structure)
+- [Technologies Used](#Technologies-Used)
+- [How to Use](#How-to-Use)
+- [Demo](#Demo)
+- [Setup](#Setup)
+- [Author](#Author)
+
 ## Features
 - Convert multiple JPG, JPEG, PNG, or HEIC images into a single PDF.
 - Built with Bootstrap for a clean, responsive UI.
@@ -28,14 +38,11 @@ A simple and fast web app to convert JPG, JPEG, PNG, or HEIC images into a singl
 ![Demo ConvertPDF](Demo-Convert-PDF.gif)
 *A quick demonstration of how images are uploaded, validated, previewed, and seamlessly converted into a PDF — all in the browser without any server interaction.*
 
-## Setup (For Developers)
+## Setup
 To run the project locally:
 - Clone the repository: `git clone https://github.com/amitesh786/ConvertPDF.git`
 - cd ConvertPdf
 Then, simply open `index.html` in your browser to get started.
-
-## License
-- This project is open-source and available under the MIT License.
 
 ## Author
 - Developed by Amitesh Singh | © 2025
