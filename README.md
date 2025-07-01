@@ -1,5 +1,5 @@
 # JPG/PNG/HEIC to PDF Converter
-A simple and fast web app to convert JPG, JPEG, PNG, or HEIC images into a single PDF — all on the client side using JavaScript and PDF-Lib.
+A simple and fast web app to convert `JPG, JPEG, PNG, or HEIC` images into a `single PDF` — all on the client side using `JavaScript` and `PDF-Lib`.
 
 ## Table of Contents
 
@@ -12,7 +12,7 @@ A simple and fast web app to convert JPG, JPEG, PNG, or HEIC images into a singl
 - [Author](#Author)
 
 ## Features
-- Convert multiple JPG, JPEG, PNG, or HEIC images into a single PDF.
+- Convert multiple `JPG, JPEG, PNG, or HEIC` images into a `single PDF`.
 - Built with Bootstrap for a clean, responsive UI.
 - 100% client-side — no server or upload required.
 - Drag & drop support for multiple files.
@@ -30,7 +30,7 @@ A simple and fast web app to convert JPG, JPEG, PNG, or HEIC images into a singl
 
 ## How to Use
 1. Open `index.html` in your browser.
-2. Upload one or more JPG, JPEG, PNG, or HEIC files using the file input or drag & drop area.
+2. Upload one or more `JPG, JPEG, PNG, or HEIC` files using the file input or drag & drop area.
 3. Click the **Convert to PDF** button.
 4. The generated PDF will be downloaded automatically.
 
