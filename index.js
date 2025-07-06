@@ -1,3 +1,14 @@
+function showToast(message, type = 'primary') {
+    const toastEl = document.getElementById('toastMessage');
+    const toastBody = toastEl.querySelector('.toast-body');
+
+    toastBody.textContent = message;
+    toastEl.className = `toast align-items-center text-bg-${type} border-0`;
+
+    const toast = new bootstrap.Toast(toastEl);
+    toast.show();
+}
+
 const convertImagesToPdf = async (files) => {
     const PDFDocument = window.PDFLib.PDFDocument;
     const pdfDoc = await PDFDocument.create();
@@ -90,7 +101,7 @@ document.getElementById('convertBtn').addEventListener('click', async function (
     const convertButton = document.getElementById('convertBtn');
 
     if (files.length === 0) {
-        alert('Please select at least one PNG, JPEG, or HEIC file');
+        showToast('Please select at least one PNG, JPEG, or HEIC file', 'warning');
         return;
     }
 
@@ -98,7 +109,12 @@ document.getElementById('convertBtn').addEventListener('click', async function (
     convertButton.innerHTML = '<span class="spinner-border spinner-border-sm"></span> Converting...';
 
     try {
+        showToast('Conversion started...', 'info');
         await convertImagesToPdf(files);
+        showToast('PDF created successfully!', 'success');
+    } catch (err) {
+        console.error(err);
+        showToast('An error occurred during conversion.', 'danger');
     } finally {
         convertButton.disabled = false;
         convertButton.innerHTML = 'Convert to PDF';
