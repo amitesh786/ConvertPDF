@@ -17,6 +17,7 @@ A simple and fast web app to convert `JPG, JPEG, PNG, or HEIC` images into a `si
 - 100% client-side — no server or upload required.
 - Drag & drop support for multiple files.
 - Automatic download of the generated PDF.
+- Including notification.
 
 ## File Structure
 - project-root/
