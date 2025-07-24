@@ -1,4 +1,4 @@
-function showToast(message, type = 'primary') {
+const showToast = (message, type = 'primary') => {
     const toastEl = document.getElementById('toastMessage');
     const toastBody = toastEl.querySelector('.toast-body');
 
