@@ -4,7 +4,6 @@ A simple and fast web app to convert `JPG, JPEG, PNG, or HEIC` images into a `si
 ## Table of Contents
 
 - [Features](#Features)
-- [File Structure](#File-Structure)
 - [Technologies Used](#Technologies-Used)
 - [How to Use](#How-to-Use)
 - [Demo](#Demo)
@@ -18,12 +17,6 @@ A simple and fast web app to convert `JPG, JPEG, PNG, or HEIC` images into a `si
 - Drag & drop support for multiple files.
 - Automatic download of the generated PDF.
 - Including notification.
-
-## File Structure
-- project-root/
-- ├── index.html        # Main HTML file with Bootstrap UI
-- ├── index.js          # JavaScript logic for image-to-PDF conversion
-- └── README.md         # Project documentation
 
 ## Technologies Used
 - **HTML5**, **CSS3**, **Bootstrap** – For responsive layout and styling.
