@@ -29,13 +29,13 @@ A simple and fast web app to convert `JPG, JPEG, PNG, or HEIC` images into a `si
 4. The generated PDF will be downloaded automatically.
 
 ## Demo
-![Demo ConvertPDF](Demo.gif)  
+![Demo ConvertPDF](Demo.gif)
 *A quick demonstration of how images are uploaded, validated, previewed, and seamlessly converted into a PDF — with **toast notifications** for actions like file upload, errors, and completion — all in the browser without any server interaction.*
 
 ## Setup
 To run the project locally:
 - Clone the repository: `git clone https://github.com/amitesh786/ConvertPDF.git`
-- cd ConvertPdf
+- cd `ConvertPdf`
 Then, simply open `index.html` in your browser to get started.
 
 ## Author
